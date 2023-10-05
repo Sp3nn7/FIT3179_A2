@@ -1,0 +1,28 @@
+Map: chloropleth used to display frequency of attacks
+
+2) Wordcloud: to show who the targets are
+
+Pie chart: to show how the attacks are being dealt, ie bomb suicide weapon etc
+
+tree map: who are performing the attacks
+
+Proportional symbol chart: top 5 most kills in the attacks where country size is enlarged
+
+1) Waffle chart: shows amount of terrorist attacks each month, incorportating a heat map, can toggle between years
+
+Circle Packing: terrorist group vs amount of attacks dealt, like wordcloud except uses bubbles
+
+box and whisker plots: each bw plot to represent a weapon and how many kills it has dealt (number of deaths vs weapon type)
+
+
+--cartogram: to show the amount of kills per attack
+--grid map to zoom in: to show specific latitudal and longitudal information
+-- Line Graph: Displaying the global terrorist attacks yearly
+
+
+
+--chord diagram: weapon type against 
+
+terrorist group vs target country
+
+number terrorists vs number of deaths

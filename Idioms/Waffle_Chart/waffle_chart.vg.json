@@ -40,6 +40,7 @@
           "color": {
             "field": "dailyAttacksGrouped",
             "type": "quantitative",
+            "title": "Amount of Attacks per Day",
             "legend": {
               "orient": "right",
               "offset": 10,

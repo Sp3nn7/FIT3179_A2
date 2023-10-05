@@ -1,63 +1,56 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url": "gtdb.csv"},
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "gtdb.csv"},
+  "transform": [
+    {
+      "filter": {"and": [{"field": "iyear", "equal": 2000}, {"field": "imonth", "equal": 8}, {"field": "iday", "gt": 0}]}
+    },
 
+    {
+      "aggregate": [{"op": "count", "field": "iday", "as": "Totalattacks"}],
+      "groupby": ["iday"]
+    },
 
-    "transform": 
-    [
-        {
-            "filter": {"and": [{"field": "iyear", "equal": 2000}, {"field": "imonth", "equal": 8}]}
-        },
+    {
+      "calculate": "toNumber(datum.iday)",
+      "as": "idayNumeric"
+    },
 
-        {
-            "aggregate": 
-            [
-                {"op": "count", "field": "iday", "as": "dailyAttacksGrouped"}
-                
-            ],
-            "groupby": ["iday"]
-        },
+    {
+      "sort": [{"field": "idayNumeric", "order": "ascending"}],
+      "window": [{"op": "row_number", "as": "id"}]
+      
+    },
 
-        {
-            "window": [{"op": "row_number", "as": "id"}],
-            "sort": [{"field": "iday", "order": "ascending"}]
-        },
-
-        {"calculate": "ceil (datum.id / 7)", "as": "row"},
-        {"calculate": "datum.id - datum.row * 7", "as": "col"}
- 
-
-    ],
-
-        "mark": {
-          "type": "circle",
-          "filled": true,
-          "tooltip": true,
-          "stroke": "black",
-          "strokeWidth": 0.7
-        },
-        "encoding": {
-          "x": {"field": "col", "type": "ordinal", "axis": null},
-          "y": {"field": "row", "type": "ordinal", "axis": null},
-          
-          "color": {
-            "field": "dailyAttacksGrouped",
-            "type": "quantitative",
-            "title": "Amount of Attacks per Day",
-            "legend": {
-              "orient": "right",
-              "offset": 10,
-              "labelOffset": 3,
-              "titlePadding": 5,
-              "titleFontSize": 20
-            }
-          },
-          "size": {"value": 241},
-          "tooltip": [
-            {"field": "iyear", "type": "nominal", "title": "Year of Attack"},
-            {"field": "imonth", "type": "nominal", "title": "Month of Attack"},
-            {"field": "iday", "type": "nominal", "title": "Day of Attack"},
-            {"field": "dailyAttacksGrouped", "type": "quantitative", "title": "Amount of attacks on this Date"}
-            ]
-        }
+    {"calculate": "ceil (datum.id / 7)", "as": "row"},
+    {"calculate": "datum.id - datum.row * 7", "as": "col"}
+  ],
+  "mark": {
+    "type": "circle",
+    "filled": true,
+    "tooltip": true,
+    "stroke": "#9e9b9b",
+    "strokeWidth": 0.7
+  },
+  "encoding": {
+    "x": {"field": "col", "type": "ordinal", "axis": null},
+    "y": {"field": "row", "type": "ordinal", "axis": null},
+    "color": {
+      "field": "Totalattacks",
+      "type": "quantitative",
+      "title": "Amount of Attacks per Day",
+      "legend": {
+        "orient": "right",
+        "offset": 10,
+        "labelOffset": 3,
+        "titlePadding": 5,
+        "titleFontSize": 20
       }
+    },
+    "size": {"value": 241},
+    "tooltip": [
+      {"field": "iday", "type": "nominal", "title": "Day of Attack"},
+      {"field": "Totalattacks", "type": "quantitative", "title": "Amount of Attacks on this Date"}
+    ]
+  }
+}

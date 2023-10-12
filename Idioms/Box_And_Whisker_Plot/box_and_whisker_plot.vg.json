@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "A vertical box plot showing median and lower and upper quartiles of the distribution.",
-    "data": {"url": "gtdb.css"},
+    "data": {"url": "gtdb.csv"},
 
     "params":[
         {
@@ -19,39 +19,43 @@
             "name": "Weapon Type Selection: "
         }
                 
-        },
-
-
-        {
-            "name": "year_selection",
-            "value": [{"iyear": 2014}],
-            "select": {"type": "point", "fields": ["iyear"]},
-            "bind": {
-                "iyear": {"input": "range", "min": 2014, "max": 2017, "step": 1, "name": "Year Selector: "}
-            }
         }
     ],
 
 
 
     "transform": [
-        
+
+
         {
-            "aggregate": [{"op": "count", "field": "weaptype1_txt", "as": "Totalweaponattacks"}],
-            "groupby": ["weaptype1_txt"]
+            "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}]}
         },
+
 
         {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"},
 
-        {"filter": {"param": "year_selection"}}
+        {
+            "window": [{
+              "op": "rank",
+              "as": "rank"
+            }],
+            "sort": [{ "field": "nkill", "order": "descending" }]
+          }, {
+            "filter": "datum.rank <= 6"
+          }
     ],
-    "mark": "boxplot",
+
+    "mark": {
+        "type":"boxplot"
+    },
+
     "encoding": {
-      "x": {"field": "weaptype1_txt", "type": "nominal"},
+      "x": {"field": "weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
       "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},
       "y": {
-        "field": "Totalweaponattacks",
+        "field": "nkill",
         "type": "quantitative",
+        "title": "Amount of Fatalities",
         "scale": {"zero": false}
       }
     }

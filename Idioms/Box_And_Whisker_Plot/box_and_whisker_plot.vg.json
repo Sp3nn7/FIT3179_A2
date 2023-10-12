@@ -44,7 +44,10 @@
         {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"}
     
     ],
-    "mark": "boxplot",
+    "mark": {
+        "type": "boxplot",
+        "outliers": false
+      },
     "encoding": {
       "x": {"field": "weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
       "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},

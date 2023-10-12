@@ -19,6 +19,16 @@
             "name": "Weapon Type Selection: "
         }
                 
+        },
+
+        {
+            "name": "year_selection",
+            "value": [{"iyear": 2014}],
+            "select": {"type": "point", "fields": ["iyear"]},
+            "bind": {
+                "iyear": {"input": "range", "min": 2014, "max": 2017, "step": 1, "name": "Year Selector: "}
+            }
+
         }
     ],
 
@@ -30,32 +40,17 @@
         {
             "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}]}
         },
-
-
-        {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"},
-
-        {
-            "window": [{
-              "op": "rank",
-              "as": "rank"
-            }],
-            "sort": [{ "field": "nkill", "order": "descending" }]
-          }, {
-            "filter": "datum.rank <= 6"
-          }
+        {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"}
+    
     ],
-
-    "mark": {
-        "type":"boxplot"
-    },
-
+    "mark": "boxplot",
     "encoding": {
       "x": {"field": "weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
       "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},
       "y": {
         "field": "nkill",
         "type": "quantitative",
-        "title": "Amount of Fatalities",
+        "title": "Amount of attacks",
         "scale": {"zero": false}
       }
     }

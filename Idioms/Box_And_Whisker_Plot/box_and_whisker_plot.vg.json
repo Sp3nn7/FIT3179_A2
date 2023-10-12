@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A vertical box plot showing median and lower and upper quartiles of the distribution.",
+    "data": {"url": "gtdb.css"},
+
+    "params":[
+        {
+        "name": "weapon_selection",
+        "bind": {
+            "input": "select",
+            "options": [
+                null,
+                "Explosives", "Firearms", "Incendiary", "Melee",  "Unknown"
+            ],
+            "labels":[
+                "Show All",
+                "Explosives", "Firearms", "Incendiary", "Melee",  "Unknown"
+            ],
+            "name": "Weapon Type Selection: "
+        }
+                
+        },
+
+
+        {
+            "name": "year_selection",
+            "value": [{"iyear": 2014}],
+            "select": {"type": "point", "fields": ["iyear"]},
+            "bind": {
+                "iyear": {"input": "range", "min": 2014, "max": 2017, "step": 1, "name": "Year Selector: "}
+            }
+        }
+    ],
+
+
+
+    "transform": [
+        
+        {
+            "aggregate": [{"op": "count", "field": "weaptype1_txt", "as": "Totalweaponattacks"}],
+            "groupby": ["weaptype1_txt"]
+        },
+
+        {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"},
+
+        {"filter": {"param": "year_selection"}}
+    ],
+    "mark": "boxplot",
+    "encoding": {
+      "x": {"field": "weaptype1_txt", "type": "nominal"},
+      "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},
+      "y": {
+        "field": "Totalweaponattacks",
+        "type": "quantitative",
+        "scale": {"zero": false}
+      }
+    }
+  }

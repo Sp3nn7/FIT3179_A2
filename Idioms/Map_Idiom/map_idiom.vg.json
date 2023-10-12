@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Countries which are being targeted","align": "center"},
     "view": {"fill": "lightblue"},
     "width": 800,
     "height": 450,

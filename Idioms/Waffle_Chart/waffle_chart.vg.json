@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "gtdb.csv"},
+  "title": {"text": "Daily Breakdown of Terrorist Attacks","align": "center"},
   "transform": [
     {
       "filter": {"and": [{"field": "iyear", "equal": 2000}, {"field": "imonth", "equal": 8}, {"field": "iday", "gt": 0}]}

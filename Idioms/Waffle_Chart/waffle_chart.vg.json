@@ -39,6 +39,7 @@
     "color": {
       "field": "Totalattacks",
       "type": "quantitative",
+      "scale": {"scheme": "reds"},
       "title": "Amount of Attacks per Day",
       "legend": {
         "orient": "right",

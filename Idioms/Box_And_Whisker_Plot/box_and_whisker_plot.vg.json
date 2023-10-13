@@ -11,11 +11,11 @@
             "input": "select",
             "options": [
                 null,
-                "Explosives", "Firearms", "Incendiary", "Melee",  "Unknown"
+                "Explosives", "Firearms", "Melee",  "Unknown"
             ],
             "labels":[
                 "Show All",
-                "Explosives", "Firearms", "Incendiary", "Melee",  "Unknown"
+                "Explosives", "Firearms", "Melee",  "Unknown"
             ],
             "name": "Weapon Type Selection: "
         }
@@ -37,21 +37,27 @@
 
     "transform": [
 
-
         {
             "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}]}
         },
+
+        {
+            "filter": {"or": [{"field": "weaptype1_txt", "equal": "Explosives"}, {"field": "weaptype1_txt", "equal": "Firearms"}, {"field": "weaptype1_txt", "equal": "Melee"}, {"field": "weaptype1_txt", "equal": "Unknown"}]}
+        },
+
+
         {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"}
     
     ],
+
     "mark": {
         "type": "boxplot",
         "outliers": false
       },
     "encoding": {
-      "x": {"field": "weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
+      "y": {"field":"weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
       "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},
-      "y": {
+      "x": {
         "field": "nkill",
         "type": "quantitative",
         "title": "Amount of attacks",

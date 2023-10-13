@@ -1,11 +1,56 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "gtdb.csv"},
+  "data": {"url": "gtdb copy.csv"},
   "title": {"text": "Daily Breakdown of Terrorist Attacks","align": "center"},
+
+  "params": [
+
+    {
+      "name": "year_selection",
+      "bind": {
+          "input": "select",
+          "options": [
+              null,
+              "2014", "2015", "2016", "2017"
+          ],
+          "labels":[
+              "Show All",
+              "2014", "2015", "2016", "2017"
+          ],
+          "name": "Year Selection: "
+      }
+              
+    },
+
+    {
+      "name": "month_selection",
+      "bind": {
+          "input": "select",
+          "options": [
+              null,
+              "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
+          ],
+          "labels":[
+              "Show All",
+              "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+          ],
+          "name": "Month Selection: "
+      }
+              
+      }
+
+
+   ],
+
+
   "transform": [
     {
-      "filter": {"and": [{"field": "iyear", "equal": 2000}, {"field": "imonth", "equal": 8}, {"field": "iday", "gt": 0}]}
+      "filter": {"field": "iday", "gt": 0}
     },
+
+    {"filter": "year_selection == null || datum.iyear == year_selection"},
+    {"filter": "month_selection == null || datum.imonth == month_selection"},
+
 
     {
       "aggregate": [{"op": "count", "field": "iday", "as": "Totalattacks"}],
@@ -17,6 +62,7 @@
       "as": "idayNumeric"
     },
 
+
     {
       "sort": [{"field": "idayNumeric", "order": "ascending"}],
       "window": [{"op": "row_number", "as": "id"}]
@@ -25,6 +71,7 @@
 
     {"calculate": "ceil (datum.id / 7)", "as": "row"},
     {"calculate": "datum.id - datum.row * 7", "as": "col"}
+
   ],
   "mark": {
     "type": "circle",
@@ -40,14 +87,7 @@
       "field": "Totalattacks",
       "type": "quantitative",
       "scale": {"scheme": "reds"},
-      "title": "Amount of Attacks per Day",
-      "legend": {
-        "orient": "right",
-        "offset": 10,
-        "labelOffset": 3,
-        "titlePadding": 5,
-        "titleFontSize": 20
-      }
+      "title": "Amount of Attacks per Day"
     },
     "size": {"value": 241},
     "tooltip": [
@@ -55,4 +95,6 @@
       {"field": "Totalattacks", "type": "quantitative", "title": "Amount of Attacks on this Date"}
     ]
   }
+
+
 }

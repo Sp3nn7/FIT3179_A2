@@ -28,7 +28,7 @@
     {
         "data": 
         {
-        "url":"2010_to_2017_terrorist_attacks_countrycount.csv",
+        "url":"gtdb.csv",
         "format": {"type": "csv"}
         },
         "mark": {"type": "circle"},

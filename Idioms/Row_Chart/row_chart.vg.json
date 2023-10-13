@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Breakdown of Yearly Terrorist Attacks","align": "center"},
+    
+    "data": {"url": "gtdb.csv"},
+
+
+
+    "params":[
+        {
+            "name": "year_selection",
+            "value": [{"iyear": 2014}],
+            "select": {"type": "point", "fields": ["iyear"]},
+            "bind": {
+                "iyear": {"input": "range", "min": 2014, "max": 2017, "step": 1, "name": "Year Selector: "}
+            }
+        }
+    ],
+
+
+    "transform":[
+        {
+          "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}, {"field": "iday", "gt": 0}]}
+        },
+
+        {"filter": {"param": "year_selection"}}
+
+    ],
+    
+
+        
+
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "attacktype1_txt",
+        "type": "nominal"
+      },
+      "x": {
+        "aggregate": "count",
+        "type": "quantitative",
+        "title": "Number of Attack Types"
+      },
+      "color": {
+        "field": "attacktype1_txt",
+        "type": "nominal",
+  
+        "scale": {
+          "domain": ["Bombing/Explosion", "Assassination", "Armed Assault", "Hostage Taking (Kidnapping)", "Facility/Infrastructure Attack", "Unknown"],
+          "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd", "#90bd67"]
+        },
+        "title": "Attack Type"
+      },
+
+
+      "tooltip": [
+        {"field": "attacktype1_txt", "type": "nominal", "title": "Attack Type"},
+        {"aggregate": "count", "type": "quantitative", "title": "Number of Attacks"}
+      ]
+    }
+  }
+  

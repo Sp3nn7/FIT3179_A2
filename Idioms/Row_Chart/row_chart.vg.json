@@ -23,7 +23,16 @@
           "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}, {"field": "iday", "gt": 0}]}
         },
 
-        {"filter": {"param": "year_selection"}}
+        {"filter": {"param": "year_selection"}},
+
+        {
+          "filter": {"or": [{"field": "attacktype1_txt", "equal": "Bombing/Explosion"},
+                            {"field": "attacktype1_txt", "equal": "Assassination"},
+                            {"field": "attacktype1_txt", "equal": "Armed Assault"},
+                            {"field": "attacktype1_txt", "equal": "Hostage Taking (Kidnapping)"},
+                            {"field": "attacktype1_txt", "equal": "Facility/Infrastructure Attack"},
+                            {"field": "attacktype1_txt", "equal": "Unknown"}]}
+        }
 
     ],
     
@@ -32,14 +41,15 @@
 
     "mark": "bar",
     "encoding": {
-      "y": {
-        "field": "attacktype1_txt",
-        "type": "nominal"
-      },
       "x": {
+        "field": "attacktype1_txt",
+        "type": "nominal",
+        "title": null
+      },
+      "y": {
         "aggregate": "count",
         "type": "quantitative",
-        "title": "Number of Attack Types"
+        "title": "Number of Attacks"
       },
       "color": {
         "field": "attacktype1_txt",

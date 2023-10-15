@@ -94,14 +94,14 @@
             "color": {
             "field": "average_attacks",
             "type": "quantitative",
-            "title": "% Contribution to 3 Years of Terrorism",
+            "title": "3 Year % Contribution",
             "scale": {"scheme": "reds"}
             },
             "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title":
             "Country"},
             {"field": "count", "type": "quantitative","title": "Number of Attacks"},
-            {"field": "average_attacks", "type": "quantitative", "format": ".2f", "title": "Global Contibution"}
+            {"field": "average_attacks", "type": "quantitative", "format": ".2f", "title": "Global Contibution (%)"}
             ]
             }
 

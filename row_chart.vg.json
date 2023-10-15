@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Yearly Breakdown of Terrorist Attacks","align": "center"},
+    "title": {"text": "Figure 2: Yearly Breakdown of Terrorist Attacks","align": "center"},
     
     "data": {"url": "gtdb.csv"},
 

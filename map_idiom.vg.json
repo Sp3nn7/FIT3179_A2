@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Terrorist Attacks from 2014-2017",
+    "title": "Figure 1: Terrorist Attacks from 2014-2017",
     "view": {"fill": "lightblue"},
     "width": 800,
     "height": 400,

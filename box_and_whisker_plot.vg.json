@@ -1,0 +1,67 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Amount of Deaths based on Specific Weapons","align": "center"},
+    "description": "A vertical box plot showing median and lower and upper quartiles of the distribution.",
+    "data": {"url": "gtdb.csv"},
+
+    "params":[
+        {
+        "name": "weapon_selection",
+        "bind": {
+            "input": "select",
+            "options": [
+                null,
+                "Explosives", "Firearms", "Melee",  "Unknown"
+            ],
+            "labels":[
+                "Show All",
+                "Explosives", "Firearms", "Melee",  "Unknown"
+            ],
+            "name": "Weapon Type Selection: "
+        }
+                
+        },
+
+        {
+            "name": "year_selection",
+            "value": [{"iyear": 2014}],
+            "select": {"type": "point", "fields": ["iyear"]},
+            "bind": {
+                "iyear": {"input": "range", "min": 2014, "max": 2017, "step": 1, "name": "Year Selector: "}
+            }
+
+        }
+    ],
+
+
+
+    "transform": [
+
+        {
+            "filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}]}
+        },
+
+        {
+            "filter": {"or": [{"field": "weaptype1_txt", "equal": "Explosives"}, {"field": "weaptype1_txt", "equal": "Firearms"}, {"field": "weaptype1_txt", "equal": "Melee"}, {"field": "weaptype1_txt", "equal": "Unknown"}]}
+        },
+
+
+        {"filter": "weapon_selection == null || datum.weaptype1_txt == weapon_selection"}
+    
+    ],
+
+    "mark": {
+        "type": "boxplot",
+        "outliers": false
+      },
+    "encoding": {
+      "y": {"field":"weaptype1_txt", "type": "nominal", "title": "Weapon Used"},
+      "color": {"field": "weaptype1_txt", "type": "nominal", "legend": null},
+      "x": {
+        "field": "nkill",
+        "type": "quantitative",
+        "title": "Amount of attacks",
+        "scale": {"zero": false}
+      }
+    }
+  }

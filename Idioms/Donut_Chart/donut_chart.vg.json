@@ -35,6 +35,11 @@
 
     "transform":[
 
+        {
+        "calculate": "'percentage of attacks from the ' + datum.gname",
+        "as": "tooltiptext"
+        },
+
         {"filter": {"and": [{"field": "iyear", "gte": 2014}, {"field": "iyear", "lte": 2017}, {"field": "iday", "gt": 0}]}},
 
         {"filter": "attack_selection == null || datum.attacktype1_txt == attack_selection"},
@@ -59,15 +64,10 @@
 
     ],
 
-    "mark": {"type": "arc", "innerRadius": 50},
+    "mark": {"type": "arc", "tooltip": true},
     "encoding": {
-      "theta": {"field": "Totalattacksfromgroup", "type": "quantitative"},
-      "color": {"field": "gname", "type": "nominal", "title": "Terrorist Organizations"},
-
-      "tooltip": [
-        {"field": "gname", "type": "nominal", "title": "Terrorist Organization"},
-        {"field": "Totalattacksfromgroup", "type": "quantitative", "title": "Number of Attacks"}
-      ]
+      "theta": {"field": "Totalattacksfromgroup", "type": "quantitative", "stack": "normalize", "title": "Percentage of attacks caused"},
+      "color": {"field": "gname", "type": "nominal", "title": "Terrorist Organization"}
     }
 
     

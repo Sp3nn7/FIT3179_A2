@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Figure 2: Yearly Breakdown of Terrorist Attacks","align": "center"},
+    "title": {"text": "Figure 2: Yearly Breakdown of Attacks","align": "center"},
     
     "data": {"url": "gtdb.csv"},
 
@@ -35,9 +35,7 @@
         }
 
     ],
-    
-
-        
+  
 
     "mark": "bar",
     "encoding": {
@@ -57,8 +55,14 @@
   
         "scale": {
           "domain": ["Bombing/Explosion", "Assassination", "Armed Assault", "Hostage Taking (Kidnapping)", "Facility/Infrastructure Attack", "Unknown"],
-          "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd", "#90bd67"]
+          "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd", "#90bd67", 500]
           
+        },
+        "legend": {
+          "padding": 35,
+          "labelFontSize": 8,
+          "offset": 0
+
         },
         "title": "Attack Type"
       },
@@ -68,6 +72,8 @@
         {"field": "attacktype1_txt", "type": "nominal", "title": "Attack Type"},
         {"aggregate": "count", "type": "quantitative", "title": "Number of Attacks"}
       ]
-    }
+    },
+
+    "padding": { "left": 50, "right": 50, "top": 10, "bottom": 50 }
   }
   

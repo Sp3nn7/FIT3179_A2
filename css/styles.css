@@ -35,9 +35,12 @@ body * {
   }
 
   .break-after-7-words {
-    white-space: nowrap;
+    column-count: 3; /* Adjust this value based on your layout */
+    column-gap: 10px; /* Adjust the gap as needed */
+    white-space: normal; /* Restore white space handling */
     counter-reset: word-count 7;
   }
+  
   
   .break-after-7-words::after {
     content: ' ';

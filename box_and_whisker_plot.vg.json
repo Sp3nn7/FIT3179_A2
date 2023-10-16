@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Figure 7: Amount of Deaths based on Specific Weapons","align": "center"},
+    "title": {"text": "Figure 7: Amount of Deaths based on Specific Weapons","align": "center", "fontSize": 16},
     "description": "A vertical box plot showing median and lower and upper quartiles of the distribution.",
     "data": {"url": "gtdb.csv"},
 

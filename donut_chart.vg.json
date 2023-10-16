@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Figure 5: Organizations Leading Terrorist Attacks", "align": "center"},
+    "title": {"text": "Figure 5: Organizations Leading Terrorist Attacks", "align": "center", "fontSize": 16},
     "data": {"url": "gtdb.csv"},
 
     "params":[

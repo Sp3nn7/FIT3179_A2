@@ -33,6 +33,22 @@ body * {
     text-align: left;
     font-family:Helvetica, Georgia ,sans-serif;
   }
+
+  .break-after-7-words {
+    white-space: nowrap;
+    counter-reset: word-count 7;
+  }
+  
+  .break-after-7-words::after {
+    content: ' ';
+  }
+  
+  .break-after-7-words::before {
+    content: counter(word-count);
+    counter-increment: word-count 7;
+    white-space: pre;
+  }
+  
   
   
   .page {

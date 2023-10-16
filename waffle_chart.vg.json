@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Figure 4: Daily Breakdown of Terrorist Attacks","align": "center", "fontSize": 16},
+  "title": {"text": "Figure 4: Daily Breakdown of Terrorist Attacks","align": "center", "fontSize": 13},
   "data": {"url": "gtdb.csv"},
 
   "params": [

@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Figure 2: Yearly Breakdown of Attacks","align": "center", "fontSize": 16},
+    "title": {"text": "Figure 2: Yearly Breakdown of Attacks","align": "center", "fontSize": 13},
     
     "data": {"url": "gtdb.csv"},
 
@@ -55,7 +55,7 @@
   
         "scale": {
           "domain": ["Bombing/Explosion", "Assassination", "Armed Assault", "Hostage Taking (Kidnapping)", "Facility/Infrastructure Attack", "Unknown"],
-          "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd", "#90bd67", 500]
+          "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd", "#90bd67"]
           
         },
         "legend": {

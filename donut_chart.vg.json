@@ -67,7 +67,7 @@
 
     "mark": {"type": "arc", "tooltip": true},
     "encoding": {
-      "theta": {"field": "Totalattacksfromgroup", "type": "quantitative", "stack": "normalize", "title": "Number of Attacks"},
+      "theta": {"field": "Totalattacksfromgroup", "type": "quantitative", "title": "Number of Attacks","stack":"normalize"},
       "color": {"field": "gname", "type": "nominal", "title": "Terrorist Organization"}
     }
 

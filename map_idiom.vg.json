@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text":"Figure 1: Terrorist Attacks from 2014-2017", "fontSize": 13},
+    "title": {"text":"Figure 1: Choropleth Map highlighting Terrorist Attacks from 2014-2017", "fontSize": 13},
     "view": {"fill": "lightblue"},
     "width": 800,
     "height": 400,

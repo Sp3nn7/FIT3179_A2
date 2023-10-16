@@ -8,7 +8,6 @@ body * {
     font-size: 50px;
     text-align: center;
     color: white;
-    padding-top: 30px;
   }
 
   h2 {
@@ -57,17 +56,14 @@ body * {
     white-space: pre;
   }
   
-  
-  
   .page {
     width: 100px;
     background-color: rgb(107, 3, 3);
     margin: auto;
     padding: 50px;
-    padding-top: 25px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: 1px solid black;
-    border-radius: 0px 0px 10px 10px;
   }
   
   .heading_section {
@@ -75,10 +71,7 @@ body * {
     background-color: rgb(107, 3, 3);
     margin: auto;
     padding: 50px;
-    padding-top: 25px;
-    padding-bottom: 0px;
     border: 1px solid black;
-    border-radius: 10px 10px 0px 0px;
   }
   
   .visuals {

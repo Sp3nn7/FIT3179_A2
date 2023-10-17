@@ -37,6 +37,11 @@ body * {
     font-family:Helvetica, Georgia ,sans-serif;
   }
 
+  .special {
+    font-weight: bold;
+    font-size: larger;
+  }
+
 
   .break-after-7-words {
     column-count: 3; /* Adjust this value based on your layout */
